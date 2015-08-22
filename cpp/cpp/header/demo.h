@@ -3,8 +3,9 @@
 
 #include "common.h"
 
-void alqaz_test_lexical_cast();
-void alqaz_test_format();
+void alqaz_test_lexical_cast();   //lexical_cast<...>
+void alqaz_test_format();			//format 
+void alqaz_test_string_algo();		//string_alog
 
 #endif
 

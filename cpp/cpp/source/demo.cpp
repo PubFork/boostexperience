@@ -3,14 +3,17 @@
 #include "alqaz_lexical_cast.h"
 #include "boost/lexical_cast.hpp"
 #include "boost/format.hpp"
+#include "boost/algorithm/string.hpp"
 
 #include <string>
+#include <vector>
 
 using namespace boost;
 using namespace boost::io;
 
 const string const_str_num = "12345";
-const string const_str_not_num = "alqaz";
+const string const_str_not_num = "alqaz.txt";
+string _long_string_not_num = "Long long ago, there was a king";
 const int	const_int_number = 11;
 
 //boost/lexical_cast.hpp
@@ -59,4 +62,43 @@ void alqaz_test_format()
 	cout << f % 49 % 20 % 100;
 
 	int tempForDebug;
+}
+
+void alqaz_test_string_algo()
+{
+	if (ends_with(const_str_not_num, "az"))
+	{
+		cout << to_upper_copy(const_str_not_num) + " UPPER" << endl;
+	}
+
+	string temp = const_str_not_num;
+	replace_first(temp, "lq", "LQ");  //将temp中首个lq替换成LQ
+	cout << temp << endl;
+
+	vector<char> v(temp.begin(), temp.end());
+	vector<char> v2 = to_upper_copy(erase_first_copy(v, "txt"));   //删除首个子串"txt"
+	for (auto i : v2){
+		cout << i << " ";
+	}
+	cout << endl;
+	to_upper(v);	//v中所有字幕就地变大写
+	for (auto i : v) cout << i << " ";
+	cout << endl;
+
+	cout << to_lower_copy(const_str_not_num) << endl;
+	
+	assert(istarts_with(const_str_not_num, "alq"));  //i打头的函数意思是忽略大小写，const_str_not_num是否以alq开头
+
+	cout << lexicographical_compare(const_str_not_num, "alqa") << endl;;  //按字典顺序检查const_str_not_num和"alqa”的大小，两个字符串长度可以不相等 param1<param2 返回true
+	string tempy = "alqaz";
+	cout << all(tempy, is_lower()) << endl;;		//检查tempy所有字符是否都是小写,还有is_space, is_alnum, is_alpha， is_any_of, is_from_range等
+	tempy = "alqaz.txt";
+	cout << "比较两个字符串是否相等 " << is_equal()(const_str_not_num, tempy) << endl;  //比较字符串是否相等，还有 is_less, is_not_greater
+
+	format fmt("|%s|. pos = %d\n");
+	iterator_range<string::iterator> rge;
+	
+	rge = find_first(_long_string_not_num,"long");	//rge是一个迭代器范围类,类似于pair<it1,it2>但是rge本身指向查找的结果，即，如果找到rgx=long,否则='';其他类似函数还有i.. find_nth, find_head,rge还可以默认转为bool类型
+	cout << fmt % rge % (rge.begin() - _long_string_not_num.begin());
+	
 }
