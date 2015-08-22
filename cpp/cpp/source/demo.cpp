@@ -1,4 +1,4 @@
-#include "../header/common.h"
+#include "common.h"
 
 
 void alqaz_test_lexical_cast()
