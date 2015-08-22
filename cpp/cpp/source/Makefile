@@ -7,7 +7,7 @@ INCPATH		=-I. -I/usr/include/python2.7 -I../header
 LIBPATH		=  -lpthread 
 LFLAGS      = -w 
 CFLAGS      = -w -c 
-CXX     	= g++
+CXX     	= g++ -std=c++11
 
 all:$(TARGET)
 

@@ -2,6 +2,7 @@
 #define COMMON_H
 
 #include <iostream>
-#include "boost/lexical_cast.hpp"
+#include <typeinfo>
+using namespace std;
 
 #endif // !COMMON_H
