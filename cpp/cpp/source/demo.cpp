@@ -100,5 +100,20 @@ void alqaz_test_string_algo()
 	
 	rge = find_first(_long_string_not_num,"long");	//rge是一个迭代器范围类,类似于pair<it1,it2>但是rge本身指向查找的结果，即，如果找到rgx=long,否则='';其他类似函数还有i.. find_nth, find_head,rge还可以默认转为bool类型
 	cout << fmt % rge % (rge.begin() - _long_string_not_num.begin());
-	
+
+	string strLast{ "yangxingping" };
+	typedef find_iterator<string::iterator> string_find_iterator;
+	string_find_iterator pos, end;
+	for (pos = make_find_iterator(strLast, first_finder("ing",is_equal())); pos != end; ++pos)
+	{
+		cout << "[ " << *pos << " ] " << endl;
+	}
+
+	typedef split_iterator<std::string::iterator> string_split_iterator;
+	string_split_iterator a, b;
+	for (a = make_split_iterator(strLast, first_finder("ng", is_equal())); a != b; ++a){
+		cout << "[" << *a << "]";
+	}
+	cout << endl;
+
 }
