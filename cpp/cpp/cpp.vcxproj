@@ -19,9 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="header\format.h" />
     <ClCompile Include="source\alqaz_lexical_cast.cpp" />
     <ClCompile Include="Source\cpp.cpp" />
     <ClCompile Include="source\demo.cpp" />
+    <ClCompile Include="source\format.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\alqaz_lexical_cast.h" />
