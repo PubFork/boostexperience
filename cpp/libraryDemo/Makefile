@@ -1,13 +1,13 @@
-TARGET		= ../../x64/Debug/lexical_cast
+TARGET		= ../x64/Debug/liblibraryDemo.so
 OBJPATH 	= .
 SOURCES		= $(wildcard *.cpp)
 OBJS    	= $(patsubst %.cpp,%.o,$(SOURCES))
 FULLOBJS 	= $(patsubst %.cpp,$(OBJPATH)/%.o,$(SOURCES))
-INCPATH		=-I. -I/usr/include/python2.7 -I../header
-LIBPATH		=  -lpthread 
-LFLAGS      = -w 
+INCPATH		= -I. -I../includes
+LIBPATH		= -lpthread 
+LFLAGS      = -w -shared
 CFLAGS      = -w -c -std=c++11
-CXX     	= g++ -g
+CXX     	= g++
 
 all:$(TARGET)
 

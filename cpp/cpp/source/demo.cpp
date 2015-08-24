@@ -4,9 +4,12 @@
 #include "boost/lexical_cast.hpp"
 #include "boost/format.hpp"
 #include "boost/algorithm/string.hpp"
+#include "boost/tokenizer.hpp"
+#include "boost/xpressive/xpressive_dynamic.hpp"
 
 #include <string>
 #include <vector>
+#include <regex>
 
 using namespace boost;
 using namespace boost::io;
@@ -20,10 +23,10 @@ const int	const_int_number = 11;
 void alqaz_test_lexical_cast()
 {
 	int iTemp = lexical_cast<int>(const_str_num);
-	std::cout << "lexical_cast<int>(std::string),由: " << const_str_num <<"("<<typeid(const_str_num).hash_code() //用hash_code()而不是name()是因为字符串的名字太长，显示效果差
-		<< ")" <<  "转换结果为 :"  << iTemp << "(" << typeid(iTemp).name() << ")" <<  std::endl;
+	std::cout << "lexical_cast<int>(std::string),由: " << const_str_num << "(" << typeid(const_str_num).hash_code() //用hash_code()而不是name()是因为字符串的名字太长，显示效果差
+		<< ")" << "转换结果为 :" << iTemp << "(" << typeid(iTemp).name() << ")" << std::endl;
 
-	alqaz_lexical_cast f{ const_int_number };	
+	alqaz_lexical_cast f{ const_int_number };
 	auto from_alqaz_lexical = lexical_cast<string>(f);
 	cout << "lexical_cast<string>(alqaz_lexical_cast),由： " << typeid(alqaz_lexical_cast).hash_code() << " 到: " << from_alqaz_lexical << endl;
 
@@ -33,9 +36,9 @@ void alqaz_test_lexical_cast()
 	try{
 		auto wrong_cast = lexical_cast<int>(const_str_not_num);
 	}
-	catch(bad_lexical_cast& e)
+	catch (bad_lexical_cast& e)
 	{
-		cout <<"在:"<< __FILE__ << "(" << __LINE__ << ")行" << "转换异常捕获" << e.what() << endl;
+		cout << "在:" << __FILE__ << "(" << __LINE__ << ")行" << "转换异常捕获" << e.what() << endl;
 	}
 }
 
@@ -54,7 +57,7 @@ void alqaz_test_format()
 	f % 100 % 90;
 	auto out = f.str();  cout << out << endl;
 	f.clear();  //绑定的 %2% 不会改变,还是10
-	
+
 	cout << f % group(showbase, oct, 111) % 333; // %1%改为输出格式为八进制
 
 	f.clear_binds();
@@ -86,7 +89,7 @@ void alqaz_test_string_algo()
 	cout << endl;
 
 	cout << to_lower_copy(const_str_not_num) << endl;
-	
+
 	assert(istarts_with(const_str_not_num, "alq"));  //i打头的函数意思是忽略大小写，const_str_not_num是否以alq开头
 
 	cout << lexicographical_compare(const_str_not_num, "alqa") << endl;;  //按字典顺序检查const_str_not_num和"alqa”的大小，两个字符串长度可以不相等 param1<param2 返回true
@@ -97,14 +100,14 @@ void alqaz_test_string_algo()
 
 	format fmt("|%s|. pos = %d\n");
 	iterator_range<string::iterator> rge;
-	
-	rge = find_first(_long_string_not_num,"long");	//rge是一个迭代器范围类,类似于pair<it1,it2>但是rge本身指向查找的结果，即，如果找到rgx=long,否则='';其他类似函数还有i.. find_nth, find_head,rge还可以默认转为bool类型
+
+	rge = find_first(_long_string_not_num, "long");	//rge是一个迭代器范围类,类似于pair<it1,it2>但是rge本身指向查找的结果，即，如果找到rgx=long,否则='';其他类似函数还有i.. find_nth, find_head,rge还可以默认转为bool类型
 	cout << fmt % rge % (rge.begin() - _long_string_not_num.begin());
 
 	string strLast{ "yangxingping" };
 	typedef find_iterator<string::iterator> string_find_iterator;
 	string_find_iterator pos, end;
-	for (pos = make_find_iterator(strLast, first_finder("ing",is_equal())); pos != end; ++pos)
+	for (pos = make_find_iterator(strLast, first_finder("ing", is_equal())); pos != end; ++pos)
 	{
 		cout << "[ " << *pos << " ] " << endl;
 	}
@@ -117,3 +120,28 @@ void alqaz_test_string_algo()
 	cout << endl;
 
 }
+
+void alqaz_test_tokenizer()
+{
+	string strFirst{ "yang xing ping, hello." };
+	tokenizer<> tok(strFirst);
+	for (auto item = tok.begin(); item != tok.end(); ++item)
+	{
+		cout << "[" << *item << "]";
+	}
+}
+
+void alqaz_test_xpress()
+{
+	using namespace boost::xpressive;
+	cregex cgx = cregex::compile("a.c");
+	assert(regex_match("abc", cgx));
+
+	string str{ "subject" };
+	std::regex e("(sub)(.*)(t)$");
+
+	std::smatch sm;
+	std::regex_match(str, sm, e);
+	cout << *(sm.begin()) << endl;
+}
+	

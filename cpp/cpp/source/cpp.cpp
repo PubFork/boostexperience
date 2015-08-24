@@ -2,7 +2,9 @@
 
 //#define test_lexical_cast 
 //#define test_format 
-#define	test_string_alog
+//#define	test_string_alog
+#define test_alqaz_tokenizer
+#define test_alqaz_xpress
 int main(void)
 {
 #ifdef test_lexical_cast
@@ -15,6 +17,11 @@ int main(void)
 #ifdef test_string_alog
 	alqaz_test_string_algo();
 #endif
-
+#ifdef test_alqaz_tokenizer
+	alqaz_test_tokenizer();
+#endif
+#ifdef test_alqaz_xpress
+	alqaz_test_xpress();
+#endif
 	return 1;
 }
