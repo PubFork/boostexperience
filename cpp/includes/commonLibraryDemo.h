@@ -3,7 +3,7 @@
 
 #ifndef ALQAZ_EXT
 #ifdef _WIN32
-#define ALQAZ_EXT __declspec(dllimport);
+#define ALQAZ_EXT __declspec(dllimport)
 #else
 #define ALQAZ_EXT
 #endif // WIN32
@@ -19,5 +19,14 @@ extern "C"
 }
 #endif // __cplusplus
 
+class ALQAZ_EXT Demo
+{
+public:
+	Demo();
+	int Add();
+private:
+	int m_x;
+	int m_y;
+};
 
 #endif

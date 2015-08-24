@@ -1,4 +1,4 @@
-#ifdef _WIN32
+#ifdef	_WIN32
 #ifndef ALQAZ_EXT
 #define ALQAZ_EXT __declspec(dllexport)
 #endif
@@ -7,7 +7,20 @@
 #endif
 #include "../includes/commonLibraryDemo.h"
 
-int ALQAZ_EXT func1(int x)
+int  func1(int x)
 {
 	return x;
 }
+
+Demo::Demo()
+{
+	m_x = 1;
+	m_y = 1;
+}
+
+int Demo::Add()
+{
+	return m_x + m_y;
+}
+
+
