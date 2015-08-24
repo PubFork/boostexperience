@@ -1,6 +1,6 @@
 
 #include "stdafx.h"
-
+#include "../includes/commonLibraryDemo.h"
 
 Demo d;
 
