@@ -7,7 +7,9 @@
 #endif
 #include "../includes/commonLibraryDemo.h"
 
-int  func1(int x)
+#include <cmath>
+
+int ALQAZ_EXT  func1(int x)
 {
 	return x;
 }
@@ -23,4 +25,8 @@ int Demo::Add()
 	return m_x + m_y;
 }
 
+float Demo::Sqrt()
+{
+	return sqrt(m_x + m_y);
+}
 

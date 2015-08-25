@@ -24,6 +24,7 @@ class ALQAZ_EXT Demo
 public:
 	Demo();
 	int Add();
+	float Sqrt();
 private:
 	int m_x;
 	int m_y;

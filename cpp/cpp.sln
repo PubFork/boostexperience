@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "unitTest", "unitTest\unitTe
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libraryDemo", "libraryDemo\libraryDemo.vcxproj", "{7AE1E1E4-1181-4F0B-BF64-679A39A90590}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "memleak", "memleak\memleak.vcxproj", "{32F24B4A-24E4-4138-A7CC-2FE0F4926B2F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -39,6 +41,12 @@ Global
 		{7AE1E1E4-1181-4F0B-BF64-679A39A90590}.Release|Win32.ActiveCfg = Release|Win32
 		{7AE1E1E4-1181-4F0B-BF64-679A39A90590}.Release|Win32.Build.0 = Release|Win32
 		{7AE1E1E4-1181-4F0B-BF64-679A39A90590}.Release|x64.ActiveCfg = Release|Win32
+		{32F24B4A-24E4-4138-A7CC-2FE0F4926B2F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{32F24B4A-24E4-4138-A7CC-2FE0F4926B2F}.Debug|Win32.Build.0 = Debug|Win32
+		{32F24B4A-24E4-4138-A7CC-2FE0F4926B2F}.Debug|x64.ActiveCfg = Debug|x64
+		{32F24B4A-24E4-4138-A7CC-2FE0F4926B2F}.Release|Win32.ActiveCfg = Release|Win32
+		{32F24B4A-24E4-4138-A7CC-2FE0F4926B2F}.Release|Win32.Build.0 = Release|Win32
+		{32F24B4A-24E4-4138-A7CC-2FE0F4926B2F}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
