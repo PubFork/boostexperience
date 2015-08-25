@@ -5,9 +5,21 @@
 #include "boost/test/output_test_stream.hpp"
 #include "boost/test/floating_point_comparison.hpp"
 #include <cmath>
+
+
+
 Demo d;
 
-boost::test_tools::predicate_result validate_list(std::list<int>& L1) //自定义函数返回值类型必须是boost::test_tools::predicate_result
+boost::test_tools::predicate_result validate_list(std::list<int>& L1) //自定义函数返回值类型必须是boost::test_tools::predicate_result  BOOST_CHECK
+{
+	for (auto it = L1.begin(); it != L1.end(); ++it)
+	{
+		if (*it <= 1) return false;
+	}
+	return true;	//bool类型可以转成boost::test_tools::predicate_result
+}
+
+bool validate_list_return_bool(std::list<int>& L1) // BOOST_CHECK_PREDICATE
 {
 	for (auto it = L1.begin(); it != L1.end(); ++it)
 	{
@@ -28,5 +40,8 @@ BOOST_AUTO_TEST_CASE( alqaz )
 
 	BOOST_CHECK(validate_list(LRight));			//自定义断言,单元测试通过
 	BOOST_CHECK(validate_list(LWrong));			//其中第一个值是1,不能通过测试
+
+	//BOOST_CHECK_PREDICATE(validate_list_return_bool, LRight);
+	
 }
 
