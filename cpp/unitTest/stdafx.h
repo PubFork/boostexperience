@@ -13,6 +13,7 @@
 
 
 // TODO: reference additional headers your program requires here
+#include <list>
 
 //Adding required boost header
 #include <boost/test/unit_test.hpp>
