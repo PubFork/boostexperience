@@ -8,6 +8,7 @@
 #include "boost/xpressive/xpressive_dynamic.hpp"
 #include "boost/assign.hpp"
 #include "boost/bimap.hpp"
+#include "boost/bimap/tags/tagged.hpp"
 
 #include <string>
 #include <vector>
@@ -209,6 +210,15 @@ void alqaz_test_bimap()
 	bm.right.insert(make_pair("222", 2));
 
 	for (auto x = bm.left.begin(); x != bm.left.end(); ++x)
+	{
+		cout << "left [" << x->first << "]=" << x->second << endl;
+	}
+
+	bimap<bimaps::tagged<int, struct id>, bimaps::tagged<string, struct name>> bm2;
+	bm2.by<id>().insert(make_pair(1, "111"));
+	bm2.by<name>().insert(make_pair("222", 2));
+
+	for (auto x = bm2.by<id>().begin(); x != bm2.by<id>().end(); ++x)
 	{
 		cout << "left [" << x->first << "]=" << x->second << endl;
 	}
