@@ -19,11 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="header\format.h" />
     <ClCompile Include="source\alqaz_lexical_cast.cpp" />
     <ClCompile Include="Source\cpp.cpp" />
     <ClCompile Include="source\demo.cpp" />
-    <ClCompile Include="source\format.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\alqaz_lexical_cast.h" />
@@ -99,7 +97,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;_WIN32_WINNT=0x0501;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Python34\include;header;G:\work\boost_1_57_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Python34\include;header;D:\work\boost_1_57_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
