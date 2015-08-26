@@ -14,6 +14,8 @@
 #include <regex>
 #include <array>
 #include <bitset>
+#include <unordered_set>
+#include <unordered_map>
 
 using namespace boost;
 using namespace boost::io;
@@ -181,5 +183,18 @@ void alqaz_test_bitset()
 	v.flip(4/*具体反转哪个位置的值*/);
 	cout << v.to_string('*', 'X') << endl;
 	int isize = v.size();
+}
+
+void alqaz_test_unordered()
+{
+	std::unordered_set<int> a = { 1, 2, 3, 4, 5, 6 };
+	for (auto i = a.begin(); i != a.end(); ++i)
+	{
+		cout << *i << " ";  //注意输出顺序，并非是1,2,3,4,,5,6
+	}
+	cout << endl;
+	//cout << a.size() << endl;
+	cout << a.bucket_count() << endl;
+	cout << a.bucket_size(1) << endl;  //返回第n个桶中元素的个数
 
 }
