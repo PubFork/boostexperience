@@ -7,7 +7,7 @@
 #include "boost/tokenizer.hpp"
 #include "boost/xpressive/xpressive_dynamic.hpp"
 #include "boost/assign.hpp"
-
+#include "boost/bimap.hpp"
 
 #include <string>
 #include <vector>
@@ -197,4 +197,19 @@ void alqaz_test_unordered()
 	cout << a.bucket_count() << endl;
 	cout << a.bucket_size(1) << endl;  //返回第n个桶中元素的个数
 
+}
+
+void alqaz_test_bimap()
+{
+	/************************************************************************/
+	/* 这个在特定情况下很有用，以前在保存白板页索引到页id之间的映射用到了             */
+	/************************************************************************/
+	bimap<int, string> bm;	//双向Map
+	bm.left.insert(make_pair(1, "111"));
+	bm.right.insert(make_pair("222", 2));
+
+	for (auto x = bm.left.begin(); x != bm.left.end(); ++x)
+	{
+		cout << "left [" << x->first << "]=" << x->second << endl;
+	}
 }

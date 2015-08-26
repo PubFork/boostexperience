@@ -7,7 +7,8 @@
 //#define test_alqaz_xpress
 //#define test_alqaz_array
 // #define test_alqaz_bitset
-#define test_alqaz_unordered
+//#define test_alqaz_unordered
+#define test_alqaz_bimap
 int main(void)
 {
 #ifdef test_lexical_cast
@@ -34,6 +35,9 @@ int main(void)
 #endif 
 #ifdef test_alqaz_unordered
 	alqaz_test_unordered();
+#endif
+#ifdef test_alqaz_bimap
+	alqaz_test_bimap();
 #endif
 	return 1;
 }
