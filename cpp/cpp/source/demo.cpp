@@ -19,6 +19,9 @@
 #include <bitset>
 #include <unordered_set>
 #include <unordered_map>
+#include <tuple>
+
+
 
 using namespace boost;
 using namespace boost::io;
@@ -269,4 +272,17 @@ void alqaz_test_circular_buffer()
 	}
 
 	circular_buffer_space_optimized<int> cb(10);		//除了内存大小分配时动态的，其他和circular_buffer基本相同
+}
+
+void alqaz_test_tuple()
+{
+	//c++11支持tuple
+	using namespace std;
+
+	auto x = std::make_tuple(1, "char", 100.0, "alqaz");
+	auto y = std::make_tuple(1, "char", 100.0, "def");
+	cout << std::get<1>(x) << endl;
+	cout << (x < y) << endl;
+	//cout << x << endl; c++11好像不支持tuple的流输出，对ostream没有重载<<运算符 而boost::tuple支持,boost::tuple还支持tie等其他函数，需要添加头文件///boost/tuple/tuple_io.hpp
+	
 }

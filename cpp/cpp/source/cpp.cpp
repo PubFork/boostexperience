@@ -9,7 +9,8 @@
 // #define test_alqaz_bitset
 //#define test_alqaz_unordered
 //#define test_alqaz_bimap
-#define test_alqaz_circular_buffer
+//#define test_alqaz_circular_buffer
+#define test_alqaz_tuple
 int main(void)
 {
 #ifdef test_lexical_cast
@@ -42,6 +43,9 @@ int main(void)
 #endif
 #ifdef test_alqaz_circular_buffer
 	alqaz_test_circular_buffer();
+#endif
+#ifdef test_alqaz_tuple
+	alqaz_test_tuple();
 #endif
 	return 1;
 }
