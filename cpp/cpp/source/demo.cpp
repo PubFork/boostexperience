@@ -6,10 +6,13 @@
 #include "boost/algorithm/string.hpp"
 #include "boost/tokenizer.hpp"
 #include "boost/xpressive/xpressive_dynamic.hpp"
+#include "boost/assign.hpp"
+
 
 #include <string>
 #include <vector>
 #include <regex>
+#include <array>
 
 using namespace boost;
 using namespace boost::io;
@@ -145,3 +148,19 @@ void alqaz_test_xpress()
 	cout << *(sm.begin()) << endl;
 }
 	
+void alqaz_test_array()
+{
+	std::array<int, 10> ar = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	ar[0] = 1;
+	ar.back() = 10;
+	assert(ar[ar.size() - 1] == 10);
+
+	ar.assign(777);
+	for (auto x = ar.begin(); x != ar.end(); ++x)
+	{
+		std::cout << *x << " ， ";
+	}
+	ar.at(3);
+	cout << " 数组输出" << endl;
+	//c++11中没有ar.c_array()把array转成c的指针 ar.at(xx)会进行边界检查，ar[xx]
+}

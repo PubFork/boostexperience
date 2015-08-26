@@ -5,6 +5,7 @@
 //#define	test_string_alog
 #define test_alqaz_tokenizer
 #define test_alqaz_xpress
+#define test_alqaz_array
 int main(void)
 {
 #ifdef test_lexical_cast
@@ -22,6 +23,9 @@ int main(void)
 #endif
 #ifdef test_alqaz_xpress
 	alqaz_test_xpress();
+#endif
+#ifdef test_alqaz_array
+	alqaz_test_array();
 #endif
 	return 1;
 }
