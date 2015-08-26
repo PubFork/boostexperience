@@ -13,6 +13,7 @@
 #include <vector>
 #include <regex>
 #include <array>
+#include <bitset>
 
 using namespace boost;
 using namespace boost::io;
@@ -163,4 +164,22 @@ void alqaz_test_array()
 	ar.at(3);
 	cout << " 数组输出" << endl;
 	//c++11中没有ar.c_array()把array转成c的指针 ar.at(xx)会进行边界检查，ar[xx]
+}
+
+void alqaz_test_bitset()
+{
+	std::bitset<5> v;  //其中每一个都是true/false值
+	v[0] = true;  //
+	v[2] = false;
+	bool b_all_true = v.all();		//是否所有都为true
+	bool b_any_true = v.any();
+	cout << v.to_string() << endl; //输出00001,注意顺序
+	cout << v.to_string('*'/*0用*号替代*/, 'X'/*1用X替代*/) << endl;
+	cout << v.to_ullong() << endl;
+	v.flip();	//反转 true->false, false->true
+	cout << v.to_string('*', 'X') << endl;
+	v.flip(4/*具体反转哪个位置的值*/);
+	cout << v.to_string('*', 'X') << endl;
+	int isize = v.size();
+
 }

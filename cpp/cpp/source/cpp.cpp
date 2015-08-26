@@ -3,9 +3,10 @@
 //#define test_lexical_cast 
 //#define test_format 
 //#define	test_string_alog
-#define test_alqaz_tokenizer
-#define test_alqaz_xpress
-#define test_alqaz_array
+//#define test_alqaz_tokenizer
+//#define test_alqaz_xpress
+//#define test_alqaz_array
+#define test_alqaz_bitset
 int main(void)
 {
 #ifdef test_lexical_cast
@@ -27,5 +28,8 @@ int main(void)
 #ifdef test_alqaz_array
 	alqaz_test_array();
 #endif
+#ifdef test_alqaz_bitset
+	alqaz_test_bitset();
+#endif 
 	return 1;
 }
