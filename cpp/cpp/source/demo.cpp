@@ -9,6 +9,7 @@
 #include "boost/assign.hpp"
 #include "boost/bimap.hpp"
 #include "boost/bimap/tags/tagged.hpp"
+#include "boost/circular_buffer.hpp"
 
 
 #include <string>
@@ -239,4 +240,33 @@ void alqaz_test_bimap()
 	cout << "right [" << right_pos->first << "]" << right_pos->second << endl;
 
 	//typedef bimap<set_of<bimaps::tagged<int, struct id>>, multi_set<bimaps::tagged<string, struct name>>> bm_t2; 注意bimap的两个模板参数类型
+}
+
+void alqaz_test_circular_buffer()
+{
+	//环形缓冲区（大小固定）,这个曾经用在白板的撤销重做实现里正好（因为支持的最大撤销重做的步数是固定的，所以使用环形缓冲正好)
+	circular_buffer<int> v(3);
+
+	for (int i = 1; i < 5; ++i)
+	{
+		v.push_back(i);
+	}
+
+	auto b_full = v.full();//判断是否已满
+	auto arrayx = v.linearize(); //返回数组的头指针
+
+	
+
+	for (auto x = v.begin(); x != v.end(); ++x)
+	{
+		cout << *x << endl;
+	}
+
+	v.rotate(v.begin() + 1);//旋转
+	for (auto x = v.begin(); x != v.end(); ++x)
+	{
+		cout << *x << endl;
+	}
+
+	circular_buffer_space_optimized<int> cb(10);		//除了内存大小分配时动态的，其他和circular_buffer基本相同
 }
