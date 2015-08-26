@@ -10,6 +10,7 @@
 #include "boost/bimap.hpp"
 #include "boost/bimap/tags/tagged.hpp"
 
+
 #include <string>
 #include <vector>
 #include <regex>
@@ -222,4 +223,20 @@ void alqaz_test_bimap()
 	{
 		cout << "left [" << x->first << "]=" << x->second << endl;
 	}
+
+	auto pos = bm2.by<id>().find(1);
+	bm2.by<id>().replace_key(pos, 11);
+	bm2.by<id>().replace_data(pos, "alqaz");
+
+	for (auto x = bm2.by<id>().begin(); x != bm2.by<id>().end(); ++x)
+	{
+		cout << "left [" << x->first << "]=" << x->second << endl;
+	}
+
+	auto left_pos = bm2.by<id>().find(11);  //project_right映射方便把指向Left的迭代器转换成指向Right的迭代器
+	auto right_pos = bm2.project_right(left_pos);
+
+	cout << "right [" << right_pos->first << "]" << right_pos->second << endl;
+
+	//typedef bimap<set_of<bimaps::tagged<int, struct id>>, multi_set<bimaps::tagged<string, struct name>>> bm_t2; 注意bimap的两个模板参数类型
 }
