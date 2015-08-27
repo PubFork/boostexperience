@@ -5,8 +5,8 @@ OBJS    	= $(patsubst %.cpp,%.o,$(SOURCES))
 FULLOBJS 	= $(patsubst %.cpp,$(OBJPATH)/%.o,$(SOURCES))
 INCPATH		= -I. -I../includes
 LIBPATH		= -lpthread 
-LFLAGS      = -w -shared
-CFLAGS      = -w -c -std=c++11
+LFLAGS      = -w -shared 
+CFLAGS      = -w -c -std=c++11 -fPIC
 CXX     	= g++
 
 all:$(TARGET)
