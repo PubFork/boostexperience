@@ -12,7 +12,7 @@
 #include "boost/circular_buffer.hpp"
 #include "boost/rational.hpp"
 #include "boost/crc.hpp"
-
+#include "boost/io/ios_state.hpp"
 
 #include <string>
 #include <vector>
@@ -22,6 +22,8 @@
 #include <unordered_set>
 #include <unordered_map>
 #include <tuple>
+#include <iostream>
+#include <fstream>
 
 
 
@@ -167,7 +169,7 @@ void alqaz_test_array()
 	ar.back() = 10;
 	assert(ar[ar.size() - 1] == 10);
 
-	ar.assign(777);
+	//ar.assign(777);
 	for (auto x = ar.begin(); x != ar.end(); ++x)
 	{
 		std::cout << *x << " ， ";
@@ -321,5 +323,18 @@ void alqaz_test_crc()
 	crc32.process_bytes("0123456789", 10);
 	cout << crc32.checksum() << endl;
 	cout << crc32() << endl;//直接返回计算值，和checksum()相同
+	//crc32(param1);相当于调用 process_byte，即
+}
 
+void alqa_test_io_state()
+{
+	{
+		io::ios_all_saver iis(cout);   //iis先保存了cout的所有 flag状态，在iis离开作用域时重置cout为iis,不知道为什么，在windows下会崩溃
+		std::string pathx = "/opt/test.log";
+		ofstream of(pathx.c_str());
+		cout.rdbuf(of.rdbuf());
+		cout << "log" << endl;
+	}
+	cout << "one " << endl;
+	cout << "two" << endl;
 }

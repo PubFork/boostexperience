@@ -16,5 +16,6 @@ void alqaz_test_circular_buffer();
 void alqaz_test_tuple();
 void alqaz_test_rational();
 void alqaz_test_crc();
+void alqa_test_io_state();
 #endif
 

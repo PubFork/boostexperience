@@ -12,7 +12,8 @@
 //#define test_alqaz_circular_buffer
 //#define test_alqaz_tuple
 //#define test_alqaz_rational
-#define test_alqaz_crc
+//#define test_alqaz_crc
+#define test_alqaz_io_state
 int main(void)
 {
 #ifdef test_lexical_cast
@@ -54,6 +55,9 @@ int main(void)
 #endif
 #ifdef test_alqaz_crc
 	alqaz_test_crc();
+#endif
+#ifdef test_alqaz_io_state
+	alqa_test_io_state();
 #endif
 	return 1;
 }
