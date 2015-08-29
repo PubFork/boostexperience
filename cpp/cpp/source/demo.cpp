@@ -10,6 +10,7 @@
 #include "boost/bimap.hpp"
 #include "boost/bimap/tags/tagged.hpp"
 #include "boost/circular_buffer.hpp"
+#include "boost/rational.hpp"
 
 
 #include <string>
@@ -20,6 +21,7 @@
 #include <unordered_set>
 #include <unordered_map>
 #include <tuple>
+
 
 
 
@@ -285,4 +287,23 @@ void alqaz_test_tuple()
 	cout << (x < y) << endl;
 	//cout << x << endl; c++11好像不支持tuple的流输出，对ostream没有重载<<运算符 而boost::tuple支持,boost::tuple还支持tie等其他函数，需要添加头文件///boost/tuple/tuple_io.hpp
 	
+}
+
+void alqaz_test_rational()
+{
+	rational<int> a(3), b(65534), c(22, 7);
+	
+	
+
+	b += a;
+	c -= a;
+	if (c >= 0)
+	{
+		c = c*b;
+		++a;
+	}
+
+	int big_x = gcd(11, 22);  //最大公约数
+	int samll_x = lcm(11, 22);	//最小公倍数
+
 }

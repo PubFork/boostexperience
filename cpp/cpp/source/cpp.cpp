@@ -10,7 +10,8 @@
 //#define test_alqaz_unordered
 //#define test_alqaz_bimap
 //#define test_alqaz_circular_buffer
-#define test_alqaz_tuple
+//#define test_alqaz_tuple
+#define test_alqaz_rational
 int main(void)
 {
 #ifdef test_lexical_cast
@@ -46,6 +47,9 @@ int main(void)
 #endif
 #ifdef test_alqaz_tuple
 	alqaz_test_tuple();
+#endif
+#ifdef test_alqaz_rational
+	alqaz_test_rational();
 #endif
 	return 1;
 }
