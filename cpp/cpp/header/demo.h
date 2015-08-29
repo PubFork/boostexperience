@@ -14,5 +14,7 @@ void alqaz_test_unordered();
 void alqaz_test_bimap();
 void alqaz_test_circular_buffer();
 void alqaz_test_tuple();
+void alqaz_test_rational();
+void alqaz_test_crc();
 #endif
 

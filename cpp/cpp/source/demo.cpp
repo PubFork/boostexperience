@@ -11,6 +11,7 @@
 #include "boost/bimap/tags/tagged.hpp"
 #include "boost/circular_buffer.hpp"
 #include "boost/rational.hpp"
+#include "boost/crc.hpp"
 
 
 #include <string>
@@ -305,5 +306,20 @@ void alqaz_test_rational()
 
 	int big_x = gcd(11, 22);  //最大公约数
 	int samll_x = lcm(11, 22);	//最小公倍数
+
+}
+
+void alqaz_test_crc()
+{
+	//crc_option based on byte  ---fast
+	//crc_baisc  base on bit ---slow
+	crc_32_type crc32;
+	cout << hex;
+	cout << crc32.checksum() << endl;
+	crc32.process_byte('a');
+	cout << crc32.checksum() << endl;
+	crc32.process_bytes("0123456789", 10);
+	cout << crc32.checksum() << endl;
+	cout << crc32() << endl;//直接返回计算值，和checksum()相同
 
 }
