@@ -13,7 +13,10 @@
 //#define test_alqaz_tuple
 //#define test_alqaz_rational
 //#define test_alqaz_crc
-#define test_alqaz_io_state
+//#define test_alqaz_io_state
+//#define test_alqaz_reference_wrapper
+//#define	test_alqaz_bind
+#define test_alqaz_bigendian
 int main(void)
 {
 #ifdef test_lexical_cast
@@ -59,5 +62,15 @@ int main(void)
 #ifdef test_alqaz_io_state
 	alqa_test_io_state();
 #endif
+#ifdef test_alqaz_reference_wrapper
+	alqaz_test_reference_wrapper();
+#endif
+#ifdef test_alqaz_bind
+	alqaz_test_bind();
+#endif
+#ifdef test_alqaz_bigendian
+	alqaz_test_bigendian();
+#endif // test_alqaz_bigendian
+
 	return 1;
 }

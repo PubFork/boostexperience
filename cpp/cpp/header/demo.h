@@ -17,5 +17,8 @@ void alqaz_test_tuple();
 void alqaz_test_rational();
 void alqaz_test_crc();
 void alqa_test_io_state();
+void alqaz_test_reference_wrapper();
+void alqaz_test_bind();
+void alqaz_test_bigendian();
 #endif
 

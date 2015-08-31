@@ -13,6 +13,10 @@
 #include "boost/rational.hpp"
 #include "boost/crc.hpp"
 #include "boost/io/ios_state.hpp"
+#include "boost/ref.hpp"
+#include "boost/typeof/typeof.hpp"
+#include "boost/assign.hpp"
+#include "boost/is_placeholder.hpp"
 
 #include <string>
 #include <vector>
@@ -24,9 +28,7 @@
 #include <tuple>
 #include <iostream>
 #include <fstream>
-
-
-
+#include <typeinfo>
 
 using namespace boost;
 using namespace boost::io;
@@ -337,4 +339,28 @@ void alqa_test_io_state()
 	}
 	cout << "one " << endl;
 	cout << "two" << endl;
+}
+
+void alqaz_test_reference_wrapper()
+{
+	int x = 10;
+	auto rw =  std::ref(x);
+
+	
+	assert(x == rw);
+	(int&)rw = 100;
+	assert(x == 100);
+	assert(std::_Is_reference_wrapper<BOOST_TYPEOF(rw)>::value);
+	assert(!std::_Is_reference_wrapper<BOOST_TYPEOF(x)>::value);
+}
+
+void alqaz_test_bind()
+{
+	//c++11中有实现
+}
+
+
+void alqaz_test_bigendian()
+{
+	//c++11中有实现
 }
