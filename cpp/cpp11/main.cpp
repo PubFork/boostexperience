@@ -4,6 +4,7 @@
 #include <iostream>
 #include <random>
 #include <functional>
+#include <type_traits>
 
 using namespace std;
 
@@ -23,6 +24,8 @@ struct square
 
 };
 
+
+
 //¥Û–°∂À
 union Endian
 {
@@ -34,13 +37,23 @@ int main(void)
 {
 	using namespace std;
 
+
 	square* sqr = new square();
 
 	auto f = std::bind(&square::func, sqr);
 
+	
+
 	cout << typeid(f).name() << endl;
 
+
+	f();
+
 	std::function<int (int&)> fx = square();
+
+	auto f2 = std::bind(fx, 33);
+
+	cout << f2() << endl;
 
 	int xy = 11;
 	 auto ret =  fx(xy);
